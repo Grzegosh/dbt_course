@@ -35,5 +35,5 @@ models:
     dim:
       +materialized: table
     src:
-      +materialized: ephemeral
+      +materialized: ephemeral  
 
