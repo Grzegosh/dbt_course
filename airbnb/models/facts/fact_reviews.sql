@@ -1,7 +1,7 @@
 {{
     config(
         materialized = 'incremental',
-        on_schema_change = 'fail'
+        on_schema_change = 'append_new_columns'
     )
 }}
 WITH src_reviews AS (
@@ -12,6 +12,7 @@ WITH src_reviews AS (
         {{ref('src_reviews')}}
 )
 SELECT
+    {{ dbt_utils.generate_surrogate_key((["review_date","listing_id","review_text"]))}} As review_id,
     *
 FROM
     src_reviews
