@@ -1,5 +1,6 @@
  models:
   - name: dim_listings_cleansed
+    description: "A cleansed version of the listings data from Airbnb"
     data_tests:
       - minimum_row_count:
           arguments:
@@ -8,11 +9,13 @@
           
     columns:
       - name: listing_id
+        description: "Unique identifier for each listing"
         data_tests:
           - unique
           - not_null
 
       - name: host_id
+        description: "Identifier for the host of each listing"
         data_tests:
           - not_null
           - relationships:
@@ -20,6 +23,7 @@
               field: host_id
 
       - name: room_type
+        description: "Type of room offered in the listing"
         data_tests:
           - accepted_values:
               values: ['Entire home/apt', 'Private room', 'Shared room', 'Hotel room']
