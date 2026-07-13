@@ -34,6 +34,7 @@
           - positive_values
 
   - name: dim_hosts_cleansed
+    description: "A cleansed version of the hosts data from Airbnb"
     config:
       contract:
         enforced: true 
@@ -42,6 +43,7 @@
         columns: [host_id]
     columns:
       - name: host_id
+        description: "Unique identifier for each host"
         data_type: integer
         constraints:
           - type: not_null
@@ -50,17 +52,21 @@
          - unique
          - not_null
       - name: host_name
+        description: "Name of the host"
         data_type: string
         data_tests:
          - not_null
       - name: is_superhost
+        description: "Indicates whether the host is a superhost"
         data_type: string
         data_tests:
          - accepted_values:
              values: ['t', 'f']
       - name: updated_at
+        description: "Timestamp of the last update to the host's information"
         data_type: timestamp
       - name: created_at
+        description: "Timestamp of when the host's information was created"
         data_type: timestamp
   - name: fact_reviews
     columns:
